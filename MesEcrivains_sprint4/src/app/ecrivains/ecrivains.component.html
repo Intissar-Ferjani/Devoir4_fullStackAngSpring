@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr><th style="font-size: 22px;" colspan="7">Liste de Ecrivains</th></tr>
+                    <tr> <th>Id</th><th>Nom</th> <th>Honoraires</th> <th>Date Début Carrière</th> </tr>
+                </thead>
+                <tbody *ngFor="let ecrivain of ecrivains">
+                    <tr >
+                        <td>{{ecrivain.idEcrivain}}</td>
+                        <td>{{ecrivain.nomEcrivain}}</td>
+                        <td>{{ecrivain.honoraires}}</td>
+                        <td>{{ecrivain.dateDebutCarriere | date:'dd/MM/yyyy'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -6,7 +6,6 @@ import java.util.Collections;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -41,17 +40,18 @@ public class SecurityConfig {
                 return cors;
             }
         }))
-            .authorizeHttpRequests(requests -> requests
-                .requestMatchers("/api/all/**").hasAnyAuthority("ADMIN", "USER")
-                .requestMatchers(HttpMethod.GET, "/api/getbyid/**").hasAnyAuthority("ADMIN", "USER")
+        	 .authorizeHttpRequests().anyRequest().permitAll();
+//            .authorizeHttpRequests(requests -> requests
+//                .requestMatchers("/api/all/**").hasAnyAuthority("ADMIN", "USER")
+//                .requestMatchers(HttpMethod.GET, "/api/getbyid/**").hasAnyAuthority("ADMIN", "USER")
 //                .requestMatchers(HttpMethod.POST, "/api/adding/**").hasAuthority("ADMIN")
-                .requestMatchers(HttpMethod.PUT, "/api/updateing/**").hasAuthority("ADMIN")
-                .requestMatchers(HttpMethod.DELETE, "/api/deling/**").hasAuthority("ADMIN")
-                .requestMatchers("/rect/**").hasAnyAuthority("ADMIN", "USER")
-                .requestMatchers("/api/ingcrect/**").hasAnyAuthority("ADMIN", "USER")
-                .anyRequest().authenticated())
-            .oauth2ResourceServer(rs -> rs.jwt(Customizer.withDefaults()));
-            
+//                .requestMatchers(HttpMethod.PUT, "/api/updating/**").hasAuthority("ADMIN")
+//                .requestMatchers(HttpMethod.DELETE, "/api/deleting/**").hasAuthority("ADMIN")
+//                .requestMatchers("/rect/**").hasAnyAuthority("ADMIN", "USER")
+//                .requestMatchers("/api/ingcrect/**").hasAnyAuthority("ADMIN", "USER")
+//                .anyRequest().authenticated())
+//            
+//            .addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
   

@@ -17,8 +17,8 @@ public interface EcrivainRepository extends JpaRepository<Ecrivain, Long>{
 	List <Ecrivain> findByNomEcrivain(String nomE);
 	List <Ecrivain> findByNomEcrivainContains(String nomE);
 	
-	@Query("SELECT e FROM Ecrivain e WHERE e.nomEcrivain LIKE %:nom% AND e.prixLivre >= :prix")
-	List<Ecrivain> findByNomPrix(@Param("nom") String nom,@Param("prix") Double prix);
+	@Query("SELECT e FROM Ecrivain e WHERE e.nomEcrivain LIKE %:nom% AND e.honoraires >= :prix")
+	List<Ecrivain> findByNomHonoraires(@Param("nom") String nom,@Param("prix") Double prix);
 	
 	@Query("select e from Ecrivain e where e.genre = ?1")
 	List<Ecrivain> findByGenre (Genre genre);
@@ -27,7 +27,7 @@ public interface EcrivainRepository extends JpaRepository<Ecrivain, Long>{
 	
 	List<Ecrivain> findByOrderByNomEcrivainAsc();
 	
-	@Query("select e from Ecrivain e order by e.nomEcrivain ASC, e.prixLivre DESC")
-	List<Ecrivain> trierEcrivainsNomsPrix();
+	@Query("select e from Ecrivain e order by e.nomEcrivain ASC, e.honoraires DESC")
+	List<Ecrivain> trierEcrivainsNomsHonoraires();
 
 }

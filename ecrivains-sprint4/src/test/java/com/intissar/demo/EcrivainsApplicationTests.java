@@ -34,7 +34,7 @@ class EcrivainsApplicationTests {
 	public void testUpdateEcrivain()
 	{
 		Ecrivain e = ecrivaintRepository.findById(1L).get();
-		e.setPrixLivre(1000.0);
+		e.setHonoraires(1000.0);
 		ecrivaintRepository.save(e);
 	}
 	
@@ -75,8 +75,8 @@ class EcrivainsApplicationTests {
 	}
 	
 	@Test
-	public void testfindByNomPrix() {
-	    List<Ecrivain> ecrivs = ecrivaintRepository.findByNomPrix("James Will", 2200.5);
+	public void testfindByNomHonoraires() {
+	    List<Ecrivain> ecrivs = ecrivaintRepository.findByNomHonoraires("James Will", 2200.5);
 	   	    
 	    for (Ecrivain e : ecrivs) {
 	        System.out.println(e);
@@ -117,9 +117,9 @@ class EcrivainsApplicationTests {
 	
 	
 	@Test
-	public void testTrierEcrivainsNomsPrix()
+	public void testTrierEcrivainsNomsHonoraires()
 	{
-		List<Ecrivain> ecrivs = ecrivaintRepository.trierEcrivainsNomsPrix();
+		List<Ecrivain> ecrivs = ecrivaintRepository.trierEcrivainsNomsHonoraires();
 		for (Ecrivain e : ecrivs)
 		{
 			System.out.println(e);
